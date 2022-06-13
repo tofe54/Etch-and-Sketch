@@ -1,0 +1,42 @@
+const container =  document.getElementById('container')
+let rows = document.getElementsByClassName('gridRow')
+let cells = document.getElementsByClassName('cell')
+const button = document.getElementById('grid')
+
+function makeGrid () {
+    makeRows(16);
+    makeColumns(16);
+};
+
+function makeRows (rowNum) {
+    for(let r = 0; r < rowNum; r++){
+        let row = document.createElement('div');
+        container.appendChild(row).className = 'gridRow';
+    };
+};
+
+function makeColumns (colNum) {
+    for(let i = 0; i < rows.length; i++){
+        for(let j = 0; j < colNum; j++){
+            let column = document.createElement('div');
+            rows[j].appendChild(column).className = 'cell'
+        };
+    };
+};
+
+
+
+function paint (){
+    const cll = document.querySelectorAll('.cell')
+cll.forEach(element => {
+    element.addEventListener('mouseenter', (e) => {
+        e.target.style.backgroundColor = "red";
+        e.target.style.opacity = "0.8"
+    });
+
+});
+
+}
+
+makeGrid()
+paint()
